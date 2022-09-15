@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "Exercicios.de.decisão"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
