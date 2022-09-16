@@ -1,7 +1,8 @@
+from ast import Break
 import random
 import sqlite3
 
-conexao = sqlite3.connect('baseDeDados.db')
+conexao = sqlite3.connect('BANCO SUPREMO, talvez um pouco mal otimizado/baseDeDados.db')
 cursor = conexao.cursor()
 
 acessar = int(input('Desejar...\n1-Acessar uma ja existente\n2-Criar uma conta\n\n: '))
@@ -12,18 +13,40 @@ def mostrarBancoDeDados():
 match acessar:
     case 2:
         print('### Criar Conta ###')
+        
         email = input('\nDigite seu email: ')
-        senha = input('\nDigite seu senha: ')
-        nome = input('\nDigite seu nome: ')
-        idade = int(input('\nDigite sua idade: '))
-        if idade < 18:
-            print('\nVocê é menor de idade.\nNão foi possivel criar uma conta bancaria.')
-            exit()
-        TipoConta = int(input('\nQual conta deseja criar?\n1-Conta Especial\n2-Conta Poupança\n3-Sair\n\n: '))
-        if TipoConta == 1:
-            contadb = 'Conta Especial'
-        elif TipoConta == 2:
-            contadb = 'Conta Poupança'
+        while True:
+            senha = input('\nDigite seu senha\n: ')
+            if len(senha) < 12:
+                print ('\nSenha deve conter pelo menos 12 Caracteres.')
+                continue
+            else:
+                break
+        while True:
+            nome = input('\nDigite seu nome: ')
+            y = nome.isalpha()
+            if y == True:
+                break
+            else:
+                print('Nome não pode conter números.')
+                continue
+        while True:
+            idade = int(input('\nDigite sua idade: '))
+            if idade < 18:
+                print('\nVocê é menor de idade.\nNão foi possivel criar uma conta bancaria.')
+                exit()
+            else: break
+        chavepix = input('\nDigite sua Chave Pix\n: ')
+        while True:
+            TipoConta = int(input('\nQual conta deseja criar?\n1-Conta Especial\n2-Conta Poupança\n3-Sair\n\n: '))
+            if TipoConta == 1:
+                contadb = 'Conta Especial'
+                break
+            elif TipoConta == 2:
+                contadb = 'Conta Poupança'
+                break
+            else:
+                continue
         contadb = str(contadb)
         
         #aN = agencia, Numbers
@@ -48,13 +71,14 @@ match acessar:
             print('')
 
 def insertTable():
-    cursor.execute('INSERT INTO contabancaria(nome,idade,contadb,saldo,numConta,agencia,limite,email,senha) VALUES (?,?,?,?,?,?,?,?,?)',(nome,idade,contadb,0,numConta,agencia,limite,email,senha))
+    cursor.execute('INSERT INTO contabancaria(nome,idade,chavepix,contadb,saldo,numConta,agencia,limite,email,senha) VALUES (?,?,?,?,?,?,?,?,?,?)',(nome,idade,chavepix,contadb,0,numConta,agencia,limite,email,senha))
     conexao.commit()
 
 cursor.execute('CREATE TABLE IF NOT EXISTS contabancaria('
 'id INTEGER PRIMARY KEY AUTOINCREMENT,'
 'nome TEXT,'
 'idade INTEGER,'
+'chavepix TEXT NOT NULL,'
 'contadb TEXT,'
 'saldo REAL,'
 'numConta TEXT,'
@@ -70,11 +94,16 @@ if acessar == 2:
 def entrarConta():
     senhaTemp = input('Digite sua senha\n: ')
     verifSenha = ("('"+(senhaTemp)+"',)")
-    if verifSenha == senha_db:
-        print('\nConta Bancaria acessada com sucesso.\n')
-    elif verifSenha != senha_db:
+    try:
+        if verifSenha == senha_db:
+            print('\nConta Bancaria acessada com sucesso.\n')
+        elif verifSenha != senha_db:
+            print('\nNão foi possivel acessar a Conta Bancaria.\n')
+            exit()
+    except:
         print('\nNão foi possivel acessar a Conta Bancaria.\n')
         exit()
+
 if acessar == 1:
     verifEmail = input('Digite seu email\n: ')
 cursor.execute(f'SELECT senha FROM contabancaria WHERE email = "{verifEmail}"')
@@ -83,12 +112,7 @@ for linha in cursor.fetchall():
     senha_db = str(senha_db)
 
 if acessar == 1:
-        entrarConta()
-
-cursor.execute(f'SELECT agencia FROM contabancaria WHERE email = "{verifEmail}"')
-for linha1 in cursor.fetchall():
-    agencia_db = linha1
-    agencia_db = str(agencia_db)
+    entrarConta()
 
 cursor.execute(f'SELECT nome FROM contabancaria WHERE email = "{verifEmail}"')
 for linha2 in cursor.fetchall():
@@ -101,38 +125,20 @@ cursor.execute(f'SELECT limite FROM contabancaria WHERE email = "{verifEmail}"')
 for linha3 in cursor.fetchall():
     limite_db = linha3
     limite_db = str(limite_db)
-letras = "()',"
 limite_db = ''.join( x for x in limite_db if x not in letras)
 limite_db = float(limite_db)
-
-cursor.execute(f'SELECT numConta FROM contabancaria WHERE email = "{verifEmail}"')
-for linha4 in cursor.fetchall():
-    numConta_db = linha4
-    numConta_db = str(numConta_db)
-letras = "()',"
-numConta_db = ''.join( x for x in numConta_db if x not in letras)
     
 cursor.execute(f'SELECT saldo FROM contabancaria WHERE email = "{verifEmail}"')
 for linha5 in cursor.fetchall():
     saldo_db = linha5
     saldo_db = str(saldo_db)
-letras = "()',"
 saldo_db = ''.join( x for x in saldo_db if x not in letras)
 saldo_db = float(saldo_db)
-
-cursor.execute(f'SELECT idade FROM contabancaria WHERE email = "{verifEmail}"')
-for linha6 in cursor.fetchall():
-    idade_db = linha6
-    idade_db = str(idade_db)
-letras = "()',"
-idade_db = ''.join( x for x in idade_db if x not in letras)
-idade_db = int(idade_db)
 
 cursor.execute(f'SELECT contadb FROM contabancaria WHERE email = "{verifEmail}"')
 for linha7 in cursor.fetchall():
     conta_db = linha7
     conta_db = str(conta_db)
-letras = "()',"
 conta_db = ''.join( x for x in conta_db if x not in letras)
 
 def usarContaEspecial(saldoCE):
@@ -159,7 +165,6 @@ def usarContaEspecial(saldoCE):
                 for linha in cursor.fetchall():
                     saldo_dt = linha
                     saldo_dt = str(saldo_dt)
-                letras = "()',"
                 saldo_dt = ''.join( x for x in saldo_dt if x not in letras)
                 saldo_dt = float(saldo_dt)
                 valormais = saldo_dt + valor
@@ -204,7 +209,6 @@ def usarContaPoupança(saldoCP,rendimento):
                 for linha in cursor.fetchall():
                     saldo_dt = linha
                     saldo_dt = str(saldo_dt)
-                letras = "()',"
                 saldo_dt = ''.join( x for x in saldo_dt if x not in letras)
                 saldo_dt = float(saldo_dt)
                 valormais = saldo_dt + valor
