@@ -58,6 +58,7 @@ class VerifConta():
         match dsj:
             case 1: self.criarPerfil1()
             case 2:
+                self.perfil()
                 cursor.execute(f'SELECT * FROM perfis WHERE email_Conta = "{self.email}"')
                 for linha in cursor.fetchall():
                     print(linha)
