@@ -15,7 +15,7 @@ class VerifConta():
         try:
             email = input('\nDigite seu email\n: ')
             self.email = email
-            cursor.execute(f'SELECT email FROM conta WHERE email = "{self.email}"')
+            cursor.execute(f'SELECT email FROM Login WHERE email = "{self.email}"')
             for linha in cursor.fetchall():
                 email_db = linha
                 email_db = str(email_db)
@@ -27,7 +27,7 @@ class VerifConta():
             self.verifEmail()
     def verifSenha(self):
         self.senha = input('\nDigite sua senha\n: ')
-        cursor.execute(f'SELECT senha FROM conta WHERE email = "{self.email}"')
+        cursor.execute(f'SELECT senha FROM Login WHERE email = "{self.email}"')
         for linha in cursor.fetchall():
             senha_db = linha
             senha_db = str(senha_db)
@@ -38,15 +38,14 @@ class VerifConta():
             print('Senha Inválida')
             self.verifSenha()
 
-def acessarConta(self):
-        self.verifEmail()
-        self.verifSenha()
-        self.menu()
+def acessarConta():
+        cliente.verifEmail()
+        cliente.verifSenha()
 
 cliente = VerifConta()
 match login:
     case '1':
-        cliente.acessarConta()
+        acessarConta()
     case '2':
         print(f'\n### Criar Conta ###')
         while True:
@@ -83,16 +82,22 @@ match login:
                 print ('Senha deve conter no mínimo 6 caracteres!')
                 continue
             else: break
-        cursor.execute('CREATE TABLE IF NOT EXISTS "conta"('
-        'email TEXT PRIMARY KEY NOT NULL UNIQUE,'
-        'senha TEXT NOT NULL'
-        ')')
-        if login == 2:
-            cursor.execute('INSERT INTO Login(nome,aniversario,email,senha) VALUES (?,?,?,?)',(nome,aniversario,email,senha))
-            conexao.commit()
-
+        cursor.execute('INSERT INTO Login(nome,aniversario,idade,email,senha) VALUES (?,?,?,?,?)',(nome,aniversario,idade,email,senha))
+        conexao.commit()
+        print(f'\nConta Criada com Sucesso!')
+        while True:
+            loginPósCad = (input(f'\nDeseja...\n1-Fazer Login\n2-Sair\n\n: '))
+            if loginPósCad != '1' and loginPósCad != '2':
+                print('Digite apenas 1 ou 2!')
+                continue
+            else: break
+        match loginPósCad:
+            case '1':
+                acessarConta()
+            case '2':
+                exit()
 while True:
-    dsj = input('Deseja...\n1-Marcar consulta\n2-Ver sintomas\n\n: ')
+    dsj = input('Deseja...\n1-Marcar consulta\n2-Ver sintomas\n3-Sair\n\n: ')
     if dsj != '1' and dsj != '2':
         print('Digite apenas 1 ou 2.')
         continue
@@ -102,6 +107,8 @@ match dsj:
         pass
     case '2':
         pass
+    case '3':
+        exit()
 
 
 cursor.close()
