@@ -48,12 +48,15 @@ def sintomaspy(email):
 
         if maior == corpCoração:
             cursor.execute('INSERT INTO HoraMarcada(Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?)', ('Cardiologista',data(),horario(),email))
+            conexao.commit()
             print('Consulta marcada com um Cardiologista!')
         elif maior == corpPulmão:
             cursor.execute('INSERT INTO HoraMarcada(Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?)', ('Pneumologista',data(),horario(),email))
+            conexao.commit()
             print('Consulta marcada com um Pneumologista!')
         elif maior == corpEstomago:
             cursor.execute('INSERT INTO HoraMarcada(Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?)', ('gastroenterologista',data(),horario(),email))
+            conexao.commit()
             print('Consulta marcada com um Gastroenterologista!')
     class Sintomas:
         def __init__(self):
