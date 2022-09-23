@@ -1,4 +1,5 @@
 from datetime import date
+from sintomas import sintomaspy
 import sqlite3
 
 conexao = sqlite3.connect('ClinicalSearch/clinicalsearch.db')
@@ -106,7 +107,7 @@ match dsj:
     case '1':
         pass
     case '2':
-        pass
+        sintomaspy(cliente.email)
     case '3':
         exit()
 
