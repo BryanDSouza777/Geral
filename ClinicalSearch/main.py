@@ -105,7 +105,15 @@ while True:
     else: break
 match dsj:
     case '1':
-        pass
+        medico = input('Digite...\n1-Cardiologista\n2-Pneumologista\n3-Gastroenterologista\n\n: ')
+        match medico:
+            case '1':
+                medico = 'Cardiologista'
+            case '2':
+                medico = 'Pneumologista'
+            case '3':
+                medico = 'gastroenterologista'
+        
     case '2':
         sintomaspy(cliente.email)
     case '3':

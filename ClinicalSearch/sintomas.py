@@ -143,7 +143,10 @@ def sintomaspy(email):
                 MarcarHorario()
             case '5':
                 exit()
+        def marcarConsulta(medico):
+            cursor.execute('INSERT INTO HoraMarcada(Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?)', (medico,data(),horario(),email))
+            conexao.commit()
+            print('Consulta marcada com um Pneumologista!')
     menu()
-
     cursor.close()
     conexao.close()
