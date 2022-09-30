@@ -1,0 +1,25 @@
+import sqlite3
+conexao = sqlite3.connect('ClinicalSearch/clinicalsearch.db')
+cursor = conexao.cursor()
+
+nomemedico = 'Somed'
+tipomedico = 'Pneumologista'
+hora = 7
+minuto = 30
+for i in range(25):
+    if minuto > 59:
+        minuto = 0
+        hora += 1
+    if hora < 10:
+        hora = f'0{hora}'
+    if minuto == 0:
+        minuto = '00'
+    horario = f'{hora}:{minuto}'
+    print (horario)
+    cursor.execute('INSERT INTO horariosDisponiveis(nomeMedico,tipoMedico,diaSemana,HorarioDisponivel,Status) VALUES (?,?,?,?,?)',(nomemedico,tipomedico,'Sexta-Feira',horario,'Disponível'))
+    conexao.commit()
+    minuto = int(minuto)
+    hora = int(hora)
+    minuto += 30
+cursor.close()
+conexao.close()

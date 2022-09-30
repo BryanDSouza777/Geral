@@ -36,6 +36,7 @@ def sintomaspy(email):
         corpCoração = corpo.count('coração')
         corpPulmão = corpo.count('pulmão')
         corpEstomago = corpo.count('estomago')
+        
         if corpCoração > corpPulmão:
             maior = corpCoração
         else:

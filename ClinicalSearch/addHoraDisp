@@ -1,2 +1,0 @@
-nomemedico = input('Nome\n: ')
-tipomedico = input('especialista\n: ')

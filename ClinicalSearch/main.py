@@ -1,5 +1,6 @@
 from datetime import date
 from sintomas import sintomaspy
+from addHoraDisp import inserirHorarioMed
 import sqlite3
 
 conexao = sqlite3.connect('ClinicalSearch/clinicalsearch.db')
