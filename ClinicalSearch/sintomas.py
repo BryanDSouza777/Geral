@@ -1,37 +1,27 @@
 def sintomaspy(email):
     import sqlite3
-    from random import randint
-    from datetime import date
-
-    def data():
-        mes = (date.today()).month
-        dia = (date.today()).day
-        dia += randint (7,30)
-        if dia > 30:
-            dia = randint(1,30)
-            if dia < (date.today()).day:
-                mes += 1
-        ano = (date.today()).year
-        mes += randint(1,12)
-        if mes > 12:
-            mes = randint(1,12)
-            if mes < (date.today()).month:
-                ano += 1
-        data = f'{dia}/{mes}/{ano}'
-        return data
-
-    def horario():
-        hora = randint(8,23)
-        minutos = randint(0,59)
-        horário = f'{hora}:{minutos}'
-        return horário
 
     conexao = sqlite3.connect('ClinicalSearch/clinicalsearch.db')
     cursor = conexao.cursor()
     letras = "()',"
     meus_sintomas = []
     corpo = []
-    
+    def diaDaSemana():
+        while True:
+            diaSemana = input('Deseja marcar uma consulta para que dia da semana:\n1 - Domingo\n2 - Segunda-Feira\n3 - Terça-Feira\n4 - Quarta-Feira\n5 - Quinta-Feira\n6 - Sexta-Feira\n7 - Sábado\n\n: ')
+            if diaSemana != '1' and diaSemana != '2' and diaSemana != '3' and diaSemana != '4' and diaSemana != '5' and diaSemana != '6' and diaSemana != '7':
+                print('Digite apenas um numero de 1 à 7!')
+                continue
+            else: break
+        match diaSemana:
+            case '1': diaSemana = 'Domingo'
+            case '2': diaSemana = 'Segunda-Feira'
+            case '3': diaSemana = 'Terça-Feira'
+            case '4': diaSemana = 'Quarta-Feira'
+            case '5': diaSemana = 'Quinta-Feira'
+            case '6': diaSemana = 'Sexta-Feira'
+            case '7': diaSemana = 'Sábado'
+        return diaSemana
     def MarcarHorario():
         corpCoração = corpo.count('coração')
         corpPulmão = corpo.count('pulmão')
@@ -48,7 +38,23 @@ def sintomaspy(email):
             maior = corpEstomago
 
         if maior == corpCoração:
-            cursor.execute('INSERT INTO HoraMarcada(Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?)', ('Cardiologista',data(),horario(),email))
+            print('Você tem que ir a um Cardiologista\n')
+            while True:
+                data = diaDaSemana()
+                print('')
+                cursor.execute(f'SELECT id, nomeMedico FROM NomeMedico WHERE "{data}" = "y" AND Especialidade = "Cardiologista"')
+                for linha in cursor.fetchall():
+                    nomeMedico = linha
+                    print(nomeMedico)
+                dsj = input(f'\nDeseja alterar a data?\n1 - Sim\n2 - Não\n\n: ')
+                if dsj == '1': continue
+                elif dsj == '2': break
+                else:
+                    print('Digite apenas 1 ou 2!')
+                    continue
+                #continuar com horario
+            
+            cursor.execute('INSERT INTO HoraMarcada(Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?)', ('Cardiologista',data,horario(),email))
             conexao.commit()
             print('Consulta marcada com um Cardiologista!')
         elif maior == corpPulmão:
@@ -116,8 +122,7 @@ def sintomaspy(email):
                 a.inserirSintoma()
             case '3':
                 a.visualizarMeusSintomas()
-                print(corpo)
-                dsjDeletar = input('Deseja deletar algum sintoma de sua lista?\n1-Sim\n2-Não\n\n: ')
+                dsjDeletar = input(f'\nDeseja deletar algum sintoma de sua lista?\n1-Sim\n2-Não\n\n: ')
                 match dsjDeletar:
                     case '1':
                         while True:
