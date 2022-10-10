@@ -99,27 +99,15 @@ match login:
             case '2':
                 exit()
 while True:
-    dsj = input('Deseja...\n1-Marcar consulta\n2-Ver sintomas\n3-Sair\n\n: ')
+    dsj = input(f'\nDeseja...\n1-Ir para o Menu Principal\n2-Sair\n\n: ')
     if dsj != '1' and dsj != '2':
         print('Digite apenas 1 ou 2.')
         continue
     else: break
 match dsj:
     case '1':
-        medico = input('Digite...\n1-Cardiologista\n2-Pneumologista\n3-Gastroenterologista\n\n: ')
-        match medico:
-            case '1':
-                medico = 'Cardiologista'
-            case '2':
-                medico = 'Pneumologista'
-            case '3':
-                medico = 'gastroenterologista'
-        
-    case '2':
         sintomaspy(cliente.email)
-    case '3':
+    case '2':
         exit()
-
-
 cursor.close()
 conexao.close()
