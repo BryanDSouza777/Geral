@@ -86,7 +86,7 @@ def sintomaspy(email):
         cursor.execute(f'SELECT HorarioDisponivel FROM horariosDisponiveis WHERE diaSemana = "{data}" AND nomeMedico = "{nomeMedico}" AND id = "{selectHorario}"')
         for linha in cursor.fetchone():
             horariosMarcado = linha
-        cursor.execute('INSERT INTO HoraMarcada(Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?)', (Especialidade,data,horariosMarcado,email))
+        cursor.execute('INSERT INTO HoraMarcada(NomeMedic,Profissional,Data,Horario,email_Paciente) VALUES (?,?,?,?,?)', (nomeMedico,Especialidade,data,horariosMarcado,email))
         conexao.commit()
         cursor.execute(f'UPDATE horariosDisponiveis SET Status = "Indisponível" WHERE diaSemana = "{data}" AND nomeMedico = "{nomeMedico}" AND id = "{selectHorario}"')
         conexao.commit()
@@ -196,11 +196,23 @@ def sintomaspy(email):
             print (f'Meus Sintomas:\n')           
             for i in range(len(meus_sintomas)):
                 print(f'{i+1} - {meus_sintomas[i]}')
-
+    idCons = []
+    def consultasMarcadas():
+                    print('Consultas Marcadas:\n')
+                    cursor.execute(f'SELECT id, NomeMedic, Profissional, Data, Horario FROM HoraMarcada WHERE email_Paciente = "{email}"')
+                    for linha in cursor.fetchall():
+                        horaMarcada = linha
+                        print(horaMarcada)
+                    cursor.execute(f'SELECT id FROM HoraMarcada WHERE email_Paciente = "{email}"')
+                    for linha in cursor.fetchall():
+                        idConsultaTemp = linha
+                        idConsultaTemp = str(idConsultaTemp)
+                        idConsultaTemp = ''.join( x for x in idConsultaTemp if x not in letras)
+                        idCons.append(idConsultaTemp)
     a = Sintomas()
     def menu():
         while True:
-            dsj = input('\nDeseja...\n1-Ver os Sintomas\n2-Selecionar Sintomas\n3-Menu dos Sintomas\n4-Marcar Consulta sem Sintomas\n5-Ver consultas marcadas\n6-Desmarcar Consulta\n7-Sair\n\n: ')
+            dsj = input('\nDeseja...\n1-Ver os Sintomas\n2-Selecionar Sintomas\n3-Menu dos Sintomas\n4-Marcar Consulta sem Sintomas\n5-Ver consultas marcadas\n6-Desmarcar Consulta\n7-Deletar Conta\n8-Sair\n\n: ')
             if dsj != '1' and dsj != '2' and dsj != '3' and dsj != '4' and dsj != '5' and dsj != '6' and dsj != '7':
                 print('Digite apenas 1, 2, 3 ou 4!')
                 continue
@@ -225,30 +237,64 @@ def sintomaspy(email):
                     case '3': dsjMedico = 'gastroenterologista'
                 MarcarConsultaFinal(dsjMedico)
             case '5':
-                idCons = []
-                def consultasMarcadas():
-                    print('Consultas Marcadas:\n')
-                    cursor.execute(f'SELECT id, NomeMedic, Profissional, Data, Horario FROM HoraMarcada WHERE email_Paciente = "{email}"')
-                    for linha in cursor.fetchall():
-                        horaMarcada = linha
-                        print(horaMarcada)
-                    cursor.execute(f'SELECT id FROM HoraMarcada WHERE email_Paciente = "{email}"')
-                    for linha in cursor.fetchall():
-                        idConsultaTemp = linha
-                        idConsultaTemp = ''.join( x for x in idConsultaTemp if x not in letras)
-                        idCons.append(idConsultaTemp)
                 consultasMarcadas()
+                menu()
             case '6':
                 consultasMarcadas()
-                idConsulta = input('Digite o ID da consulta que deseja deletar\n: ')
-
-                cursor.execute(f'DELETE HoraMarcada WHERE id = "{}"')
+                while True:
+                    idConsulta = input('Digite o ID da consulta que deseja deletar\n: ')
+                    if idConsulta not in idCons:
+                        print('Digite um ID válido')
+                        continue
+                    else: break
+                cursor.execute(f'SELECT nomeMedic FROM HoraMarcada WHERE id = "{idConsulta}"')
                 for linha in cursor.fetchall():
-                    sintoma = linha
-                    sintoma = ''.join( x for x in sintoma if x not in letras)
-                    print(f'\nSintoma "{sintoma}" adicionado à lista!')
-                
+                    nomeMedic = linha
+                    nomeMedic = ''.join( x for x in nomeMedic if x not in letras)
+                cursor.execute(f'SELECT Data FROM HoraMarcada WHERE id = "{idConsulta}"')
+                for linha in cursor.fetchall():
+                    diaSem = linha
+                    diaSem = ''.join( x for x in diaSem if x not in letras)
+                cursor.execute(f'SELECT Horario FROM HoraMarcada WHERE id = "{idConsulta}"')
+                for linha in cursor.fetchall():
+                    horarDisp = linha
+                    horarDisp = ''.join( x for x in horarDisp if x not in letras)
+                cursor.execute(f'UPDATE horariosDisponiveis SET Status = "Disponível" WHERE nomeMedico = "{nomeMedic}" AND diaSemana = "{diaSem}" AND HorarioDisponivel = "{horarDisp}"')
+                conexao.commit()
+                cursor.execute(f'DELETE FROM HoraMarcada WHERE id = "{idConsulta}"')
+                conexao.commit()
+                menu()
             case '7':
+                while True:
+                    certeza = input('Tem certeza que deseja deletar sua conta?\n1-Sim\n2-Não\n\n: ')
+                    if certeza != '1' and certeza != '2':
+                        print ('Digite apenas 1 ou 2!')
+                        continue
+                    else: break
+                match certeza:
+                    case '1':
+                        cursor.execute(f'SELECT nomeMedic FROM HoraMarcada WHERE email_Paciente = "{email}"')
+                        for linha in cursor.fetchone():
+                            nomeMedic = linha
+                            nomeMedic = ''.join( x for x in nomeMedic if x not in letras)
+                        cursor.execute(f'SELECT Data FROM HoraMarcada WHERE email_Paciente = "{email}"')
+                        for linha in cursor.fetchone():
+                            diaSem = linha
+                            diaSem = ''.join( x for x in diaSem if x not in letras)
+                        cursor.execute(f'SELECT Horario FROM HoraMarcada WHERE email_Paciente = "{email}"')
+                        for linha in cursor.fetchone():
+                            horarDisp = linha
+                            horarDisp = ''.join( x for x in horarDisp if x not in letras)
+                        cursor.execute(f'UPDATE horariosDisponiveis SET Status = "Disponível" WHERE nomeMedico = "{nomeMedic}" AND diaSemana = "{diaSem}" AND HorarioDisponivel = "{horarDisp}"')
+                        conexao.commit()
+                        cursor.execute(f'DELETE FROM HoraMarcada WHERE email_Paciente = "{email}"')
+                        conexao.commit()
+                        #continuar o efeito cascata das consultas
+                    case '2':
+                        print('Voltando ao Menu...')
+                        menu()
+
+            case '8':
                 exit()
     menu()
     cursor.close()
