@@ -1,0 +1,14 @@
+CLINICAL SEARCH
+
+1 site de marcar consultas
+
+2criar e deletar conta
+criar uma listas d sintomas
+marcar uma consulta baseada ou não na lista de sintomas
+
+3cadastrar-se
+   nome
+   data de nascimento
+   email com verificador
+   senha
+login

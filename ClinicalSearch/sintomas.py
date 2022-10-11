@@ -1,6 +1,6 @@
 def sintomaspy(email):
     import sqlite3
-    conexao = sqlite3.connect('ClinicalSearch/clinicalsearch.db')
+    conexao = sqlite3.connect('clinicalsearch.db')
     cursor = conexao.cursor()
     letras = "()',"
     meus_sintomas = []
@@ -144,17 +144,18 @@ def sintomaspy(email):
                 a.menuSintomas()
             if id > 45:
                 self.inserirSintoma()
-            cursor.execute(f'SELECT sintomas FROM Sintomas WHERE id = "{id}"')
-            for linha in cursor.fetchall():
-                sintoma = linha
-                sintoma = ''.join( x for x in sintoma if x not in letras)
-                print(f'\nSintoma "{sintoma}" adicionado à lista!')
-                meus_sintomas.append(sintoma)
-                cursor.execute(f'SELECT parte_corpo FROM Sintomas WHERE id = "{id}"')
-                for  linha in cursor.fetchall():
-                    parte_corpo = linha
-                    parte_corpo = ''.join( x for x in parte_corpo if x not in letras)
-                    corpo.append(parte_corpo)
+            if id > 0 and id < 46:
+                cursor.execute(f'SELECT sintomas FROM Sintomas WHERE id = "{id}"')
+                for linha in cursor.fetchall():
+                    sintoma = linha
+                    sintoma = ''.join( x for x in sintoma if x not in letras)
+                    print(f'\nSintoma "{sintoma}" adicionado à lista!')
+                    meus_sintomas.append(sintoma)
+                    cursor.execute(f'SELECT parte_corpo FROM Sintomas WHERE id = "{id}"')
+                    for  linha in cursor.fetchall():
+                        parte_corpo = linha
+                        parte_corpo = ''.join( x for x in parte_corpo if x not in letras)
+                        corpo.append(parte_corpo)
             self.inserirSintoma()
         def menuSintomas(self):
             self.visualizarMeusSintomas()
@@ -168,25 +169,15 @@ def sintomaspy(email):
                 case '1':
                     a.menuSintomas()
                 case '2':
-                    def deletarSintoma():
+                    while True:
                         deletar = int(input('ID: '))
-                        while True:
-                            if deletar > len(meus_sintomas):
-                                deletarSintoma()
-                            else: break
+                        if deletar == 0:
+                            break
+                        if deletar > len(meus_sintomas):
+                            continue
                         del(meus_sintomas[deletar-1])
                         a.visualizarMeusSintomas()
-                    deletarSintoma()
-                    while True:
-                        continuar = input('Deletar outro?\n1-Sim\n2-Não\n\n: ')
-                        if continuar != '1' and continuar != '2':
-                            continue
-                        else: break
-                    match continuar:
-                        case '1':
-                            deletarSintoma()
-                        case '2':
-                            a.menuSintomas()
+                    a.menuSintomas()
                 case '3':
                     MarcarHorario()
                 case '4':
@@ -220,7 +211,30 @@ def sintomaspy(email):
             case '1':
                 a.visualizarSintomas()
             case '2':
-                a.inserirSintoma()
+                idtemp = []
+                while True:
+                    id = int(input(f'\nDigite o ID do sintoma desejado\n0 = Para ao menu\n\n: '))
+                    if id in idtemp:
+                        print(f"\nNão é possivel escolher ID's repetidos!")
+                        continue
+                    else: idtemp.append(id)
+                    if id == 0:
+                        break
+                    if id > 45:
+                        continue
+                    if id > 0 and id < 46:
+                        cursor.execute(f'SELECT sintomas FROM Sintomas WHERE id = "{id}"')
+                        for linha in cursor.fetchall():
+                            sintoma = linha
+                            sintoma = ''.join( x for x in sintoma if x not in letras)
+                            print(f'\nSintoma "{sintoma}" adicionado à lista!')
+                            meus_sintomas.append(sintoma)
+                            cursor.execute(f'SELECT parte_corpo FROM Sintomas WHERE id = "{id}"')
+                            for  linha in cursor.fetchall():
+                                parte_corpo = linha
+                                parte_corpo = ''.join( x for x in parte_corpo if x not in letras)
+                                corpo.append(parte_corpo)
+                a.menuSintomas()
             case '3':
                 a.menuSintomas()
             case '4':

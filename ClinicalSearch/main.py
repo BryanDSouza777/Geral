@@ -3,7 +3,7 @@ from sintomas import sintomaspy
 from addHoraDisp import inserirHorarioMed
 import sqlite3
 
-conexao = sqlite3.connect('ClinicalSearch/clinicalsearch.db')
+conexao = sqlite3.connect('clinicalsearch.db')
 cursor = conexao.cursor()
 while True:
     login = input('Deseja...\n1-Fazer Login\n2-Cadastrar-se\n\n: ')
