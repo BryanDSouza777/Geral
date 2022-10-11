@@ -90,6 +90,10 @@ def sintomaspy(email):
         conexao.commit()
         cursor.execute(f'UPDATE horariosDisponiveis SET Status = "Indisponível" WHERE diaSemana = "{data}" AND nomeMedico = "{nomeMedico}" AND id = "{selectHorario}"')
         conexao.commit()
+        cursor.execute(f'UPDATE horariosDisponiveis SET cliente = "{email}" WHERE diaSemana = "{data}" AND nomeMedico = "{nomeMedico}" AND id = "{selectHorario}"')
+        conexao.commit()
+        print(f'Consulta marcada com um {Especialidade}!')
+        menu()
 
     def MarcarHorario():
         corpCoração = corpo.count('coração')
@@ -109,18 +113,12 @@ def sintomaspy(email):
         if maior == corpCoração:
             print('Você precisa ir a um Cardiologista\n')
             MarcarConsultaFinal('Cardiologista')
-            print('Consulta marcada com um Cardiologista!')
-            menu()
         elif maior == corpPulmão:
             print('Você precisa ir a um Pneumologista\n')
             MarcarConsultaFinal('Pneumologista')
-            print('Consulta marcada com um Pneumologista!')
-            menu()
         elif maior == corpEstomago:
             print('Você precisa ir a um Gastroenterologista\n')
             MarcarConsultaFinal('gastroenterologista')
-            print('Consulta marcada com um Gastroenterologista!')
-            menu()
     class Sintomas:
         def __init__(self):
             pass
@@ -143,7 +141,7 @@ def sintomaspy(email):
         def inserirSintoma(self):
             id = int(input(f'\nDigite o ID do sintoma desejado\n0 = Para ao menu\n\n: '))
             if id == 0:
-                MarcarHorario()
+                a.menuSintomas()
             if id > 45:
                 self.inserirSintoma()
             cursor.execute(f'SELECT sintomas FROM Sintomas WHERE id = "{id}"')
@@ -168,26 +166,27 @@ def sintomaspy(email):
                 else: break
             match dsj:
                 case '1':
-                    a.visualizarMeusSintomas()
+                    a.menuSintomas()
                 case '2':
-                    while True:
+                    def deletarSintoma():
                         deletar = int(input('ID: '))
                         while True:
                             if deletar > len(meus_sintomas):
-                                continue
+                                deletarSintoma()
                             else: break
                         del(meus_sintomas[deletar-1])
                         a.visualizarMeusSintomas()
-                        while True:
-                            continuar = input('Deletar outro?\n1-Sim\n2-Não\n\n: ')
-                            if continuar != '1' and continuar != '2':
-                                continue
-                            else: break
-                        match continuar:
-                            case '1':
-                                continue
-                            case '2':
-                                menu()
+                    deletarSintoma()
+                    while True:
+                        continuar = input('Deletar outro?\n1-Sim\n2-Não\n\n: ')
+                        if continuar != '1' and continuar != '2':
+                            continue
+                        else: break
+                    match continuar:
+                        case '1':
+                            deletarSintoma()
+                        case '2':
+                            a.menuSintomas()
                 case '3':
                     MarcarHorario()
                 case '4':
@@ -198,22 +197,22 @@ def sintomaspy(email):
                 print(f'{i+1} - {meus_sintomas[i]}')
     idCons = []
     def consultasMarcadas():
-                    print('Consultas Marcadas:\n')
-                    cursor.execute(f'SELECT id, NomeMedic, Profissional, Data, Horario FROM HoraMarcada WHERE email_Paciente = "{email}"')
-                    for linha in cursor.fetchall():
-                        horaMarcada = linha
-                        print(horaMarcada)
-                    cursor.execute(f'SELECT id FROM HoraMarcada WHERE email_Paciente = "{email}"')
-                    for linha in cursor.fetchall():
-                        idConsultaTemp = linha
-                        idConsultaTemp = str(idConsultaTemp)
-                        idConsultaTemp = ''.join( x for x in idConsultaTemp if x not in letras)
-                        idCons.append(idConsultaTemp)
+        print('Consultas Marcadas:\n')
+        cursor.execute(f'SELECT id, NomeMedic, Profissional, Data, Horario FROM HoraMarcada WHERE email_Paciente = "{email}"')
+        for linha in cursor.fetchall():
+            horaMarcada = linha
+            print(horaMarcada)
+        cursor.execute(f'SELECT id FROM HoraMarcada WHERE email_Paciente = "{email}"')
+        for linha in cursor.fetchall():
+            idConsultaTemp = linha
+            idConsultaTemp = str(idConsultaTemp)
+            idConsultaTemp = ''.join( x for x in idConsultaTemp if x not in letras)
+            idCons.append(idConsultaTemp)
     a = Sintomas()
     def menu():
         while True:
             dsj = input('\nDeseja...\n1-Ver os Sintomas\n2-Selecionar Sintomas\n3-Menu dos Sintomas\n4-Marcar Consulta sem Sintomas\n5-Ver consultas marcadas\n6-Desmarcar Consulta\n7-Deletar Conta\n8-Sair\n\n: ')
-            if dsj != '1' and dsj != '2' and dsj != '3' and dsj != '4' and dsj != '5' and dsj != '6' and dsj != '7':
+            if dsj != '1' and dsj != '2' and dsj != '3' and dsj != '4' and dsj != '5' and dsj != '6' and dsj != '7' and dsj != '8':
                 print('Digite apenas 1, 2, 3 ou 4!')
                 continue
             else: break
@@ -273,27 +272,17 @@ def sintomaspy(email):
                     else: break
                 match certeza:
                     case '1':
-                        cursor.execute(f'SELECT nomeMedic FROM HoraMarcada WHERE email_Paciente = "{email}"')
-                        for linha in cursor.fetchone():
-                            nomeMedic = linha
-                            nomeMedic = ''.join( x for x in nomeMedic if x not in letras)
-                        cursor.execute(f'SELECT Data FROM HoraMarcada WHERE email_Paciente = "{email}"')
-                        for linha in cursor.fetchone():
-                            diaSem = linha
-                            diaSem = ''.join( x for x in diaSem if x not in letras)
-                        cursor.execute(f'SELECT Horario FROM HoraMarcada WHERE email_Paciente = "{email}"')
-                        for linha in cursor.fetchone():
-                            horarDisp = linha
-                            horarDisp = ''.join( x for x in horarDisp if x not in letras)
-                        cursor.execute(f'UPDATE horariosDisponiveis SET Status = "Disponível" WHERE nomeMedico = "{nomeMedic}" AND diaSemana = "{diaSem}" AND HorarioDisponivel = "{horarDisp}"')
+                        cursor.execute(f'UPDATE horariosDisponiveis SET Status = "Disponível" WHERE cliente = "{email}"')
+                        conexao.commit()
+                        cursor.execute(f'UPDATE horariosDisponiveis SET cliente = "" WHERE cliente = "{email}"')
                         conexao.commit()
                         cursor.execute(f'DELETE FROM HoraMarcada WHERE email_Paciente = "{email}"')
                         conexao.commit()
-                        #continuar o efeito cascata das consultas
+                        cursor.execute(f'DELETE FROM Login WHERE email = "{email}"')
+                        conexao.commit()
                     case '2':
                         print('Voltando ao Menu...')
                         menu()
-
             case '8':
                 exit()
     menu()
