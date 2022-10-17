@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Id e Class</title>
+    <style>
+        h1 { /*pegando todos os elementos h1*/
+            color: green;
+        }
+        .fundoVermelho{ /*pegando todos os elementos com essa class*/
+            background-color: red;
+        }
+        .bordaVerde{
+            border: 10px solid green;
+        }
+        #cabecalhoDois{ /*pegando o elemento com essa id, dificil trocar dps, não sobrescreve*/
+            border: 10px solid blue;
+        }
+    </style><!--Tag de CSS, não é a melhor maneira de usar css, existem outra melhores-->
+</head>
+<!--Nesse Aula veremos sobre os Atributos ID e Class-->
+<body>
+    <!--tag "id" é o identificador, como se fosse o cpf
+    ou RG daquela tag, somente ela e mais nenhuma outra podera ter aquele valor-->
+    <!--tag "class" é identica ao "id" com a diferença de que pode ser
+    repetida entre varios elementos do HTML
+    inclusive podemos ter um elemento com mais de 1 class-->
+    <h1 id="cabecalhoUm" class="fundoVermelho bordaVerde">Texto aqui</h1><!--Tag de Titulo-->
+    <h1 id="cabecalhoDois" class="fundoVermelho">Texto aqui</h1><!--Tag de Titulo-->
+    <p>paragrafo</p>
+    <!--Para que serve os atributos ID e CLASS?
+    Eles irão ser de extrema importancia quando entrarmos em CSS para identificarmos em qual elemento mexeremos
+    tambem sao usados em arquivos JavaScript-->
+</body>
+</html>

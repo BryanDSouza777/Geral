@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>links, imagens, textos</title>
+</head>
+<body><!--Tags dentro de tags-->
+    <!--O atributo style soh aplica o css naquela tag unica-->
+    <h1 style="background: red;">Cabeçalho</h1><!--Outra maneira de colocar css é com o atributo style-->
+    <!--Tags que podem ir dentro da tag <p>: -->
+        <!--
+            <b></b>tag de bold, negrito
+            <i></i>tag para italico
+            <a></a>tag de link, que tambem pode conter a tag de imagem
+            <img>tag de imagem
+            <s></s> tag de risco de errata
+            <u></u> tag de sublinhado
+            <small></small> deixar o texto menor
+            <sup></sup> tag para "subir"
+            <sub></sub> tag para "descer"
+            <br> tag de quebra de linha
+            <hr> tag de linha horizontal
+        -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Rerum, facilis ex repellat est dicta soluta libero
+        deleniti veritatis. Suscipit molestias quam autem 
+        fuga modi ipsum reprehenderit odit amet. 
+        Facere, quibusdam.</p>
+    <!-- TAG para texto pre formatado <pre></pre>-->
+    <!-- TAG para codigo<code></code>-->
+    <pre><code>def ganhou():
+    #checando linhas
+    for i in range(3):
+        soma = board[i][0]+board[i][1]+board[i][2]
+        if soma==3 or soma ==-3:
+            return 1
+
+        #checando colunas
+    for i in range(3):
+        soma = board[0][i]+board[1][i]+board[2][i]
+        if soma==3 or soma ==-3:
+            return 1
+
+    #checando diagonais
+    diagonal1 = board[0][0]+board[1][1]+board[2][2]
+    diagonal2 = board[0][2]+board[1][1]+board[2][0]
+    if diagonal1==3 or diagonal1==-3 or diagonal2==3 or diagonal2==-3:
+        return 1
+
+    return 0</code></pre>
+
+    <!--TAG span e div
+    div: conteiner que não da pra colocar em texto
+    span: conteiner que da pra colocar em texto-->
+
+    <!--Para conhecer todas as tags HTML va para esse link-->
+    <a target = "_blank" href="https://developer.mozilla.org/pt-BR/docs/Web/HTML">Link com todas as tags</a>
+    
+</body>
+</html>
