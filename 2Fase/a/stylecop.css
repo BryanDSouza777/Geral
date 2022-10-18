@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+div{
+    height: 300px;
+    width: 100%;
+}
+.header{
+    background-color: blue;
+    height: 10vh;
+}
+.main{
+    background-color: purple;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    display: flex;
+    background-color: cyan;
+    width: 300px;
+    justify-content: center;
+}
+.logo img{
+    margin-bottom: 200px;
+    width: 60%;
+}
+.loginMenu{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    width:500px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+input{
+    background-color: grey;
+    color: white;
+    height: 60px;
+    padding-top: 10px;
+}
+input::placeholder{
+    padding-left: 20px;
+    color: lightgrey;
+    font-size: 25px;
+}
