@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url("https://media.discordapp.net/attachments/831720527948939285/1034105379644243978/Wallpaper_Brainly.jpg?width=1208&height=655");
+    background-size: 100%;
+}
+.container{
+    display: grid;
+    grid-template-areas:
+    'h h h h h'
+    'm m m m m'
+    'f f f f f';
+}
+.logo{
+    width: 50px;
+}
+.container div{
+    padding: 20px;
+    border: 1px solid blue;
+}
+#header{
+    grid-area: h;
+    height: 10vh;
+    width: 100%;
+}
+#main{
+    grid-area: m;
+    height: 65vh;
+}
+#footer{
+    grid-area: f;
+    height: 12vh
+}
