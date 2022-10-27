@@ -80,3 +80,13 @@ body{
     padding-left: 225px;
     padding-right: 225px;
 }
+@media (max-width: 500px){
+    .container{
+        grid-template-columns: auto auto;
+    }
+}
+@media (min-width: 1000px){
+    .container{
+        border: red;
+    }
+}
