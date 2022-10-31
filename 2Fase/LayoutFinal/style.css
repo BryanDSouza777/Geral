@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main{
+    background-color: gray;
+    height: 98vh;
+    width: 100%;
+}
+.header{
+    background-color: rgb(30, 30, 30);
+    border: 10px;
+    border-color: black;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+#Menu{
+    display: flex;
+    justify-content: center;
+    align-self: center; 
+    background-repeat: no-repeat;
+}
+
+.buttonH{
+    display: flex;
+    background-color: rgb(30, 30, 30);
+    width: 75px;
+    height: 50px;
+}
+.content{
+    background-color: black;
+    height: 90vh;
+    display: flex;
+}
+#text{
+    border: 1px solid;
+    border-color: rgb(48,48,48);
+    background-color: rgb(18,18,18);
+    width: 100px;
+
+}
