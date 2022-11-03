@@ -3,43 +3,98 @@
     margin: 0;
 }
 .main{
-    background-color: gray;
     height: 98vh;
     width: 100%;
 }
 .header{
     background-color: rgb(30, 30, 30);
-    border: 10px;
-    border-color: black;
     height: 60px;
     width: 100%;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 #Menu{
     display: flex;
+    background-color: rgb(30, 30, 30);
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1036627174557483089/imagem_2022-10-31_100549350.png");
     justify-content: center;
     align-self: center; 
-    background-repeat: no-repeat;
+    width: 60px;
 }
-
 .buttonH{
     display: flex;
-    background-color: rgb(30, 30, 30);
-    width: 75px;
+    background-color: rgb(4, 0, 255);
     height: 50px;
+    border: 0;
+    background-repeat: no-repeat;
 }
 .content{
-    background-color: black;
+    background-color: rgb(160, 160, 160);
     height: 90vh;
     display: flex;
 }
-#text{
-    border: 1px solid;
-    border-color: rgb(48,48,48);
-    background-color: rgb(18,18,18);
+input{
+    border: 1px solid #303030;
+    height: 40px;
+    width: 540px;
+    font-size: 16px;
+    padding-left: 20px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+text::placeholder{
+    font-size: 30px;
+}
+#YoutubeIcon{
+    width: 120px;
+    background: no-repeat;
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1037704247535484998/imagem_2022-11-03_092340889.png")
+}
+/* #virtualkeyboard{
+    width: 50px;
+    background-image: url("") 
+}*/
+#search{
+    margin-left: -2px;
+    height: 42px;
+    width: 60px;
+    border: 1px solid #303030;
+    background-color: rgb(34, 34, 34);
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1037724361462919211/unknown.png");
+    background-position-x:30%;
+    background-position-y: center;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+}
+#mic{
+    margin-left: 25px;
+    width: 50px;
+    background-image: url("")
+}
+#threepoints{
     width: 100px;
+    background-image: url("")
+}
+#login{
+    width: 100px;
+    background-image: url("")
+}
+#div1{
+    display: flex;
+}
+#div2{
+    display: flex;
+    align-items: center;
+}
 
+#div3{
+    display: flex;
+    gap: 20px;
+}
+#search:hover{
+    border-color: rgba(128, 128, 128, 0.63);
+}
+#search:hover{
+    border-color: rgba(128, 128, 128, 0.63);
 }
