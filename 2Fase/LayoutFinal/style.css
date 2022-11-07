@@ -7,7 +7,7 @@
     width: 100%;
 }
 .header{
-    background-color: rgb(30, 30, 30);
+    background-color: #0f0f0f;
     height: 60px;
     width: 100%;
     display: flex;
@@ -16,11 +16,24 @@
 }
 #Menu{
     display: flex;
-    background-color: rgb(30, 30, 30);
+    background-color: transparent;
+    border-radius: 50px;
     background-image: url("https://media.discordapp.net/attachments/892937609943322635/1036627174557483089/imagem_2022-10-31_100549350.png");
+    background-position-x: center;
+    background-position-y: center;
+    margin-left: 15px;
+    margin-right: 10px;
     justify-content: center;
     align-self: center; 
-    width: 60px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+#Menu:hover{
+    background-color: #242424;
+}
+#Menu:focus{
+    background-color: #313131;
 }
 .buttonH{
     display: flex;
@@ -29,59 +42,107 @@
     border: 0;
     background-repeat: no-repeat;
 }
-.content{
-    background-color: rgb(160, 160, 160);
-    height: 90vh;
-    display: flex;
-}
-input{
-    border: 1px solid #303030;
+#text{
+    background-color: transparent;
+    border: 0;
+    color: white;
     height: 40px;
-    width: 540px;
+    width: 435px;
     font-size: 16px;
     padding-left: 20px;
-    border-bottom-left-radius: 30px;
-    border-top-left-radius: 30px;
+    outline: 0;
 }
-text::placeholder{
-    font-size: 30px;
+.searchBar:focus-within{
+    border: 1px solid #065fd4;
 }
 #YoutubeIcon{
     width: 120px;
     background: no-repeat;
     background-image: url("https://media.discordapp.net/attachments/892937609943322635/1037704247535484998/imagem_2022-11-03_092340889.png")
 }
-/* #virtualkeyboard{
+.searchBar{
+    border: 1px solid #303030;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    background-color: #121212;
+    display: flex;
+    height: 40px;
+}
+#virtualkeyboard{
+    background-color: transparent;
     width: 50px;
-    background-image: url("") 
-}*/
+    background-image: url("https://www.gstatic.com/inputtools/images/tia.png");
+    background-position-x: center;
+    background-position-y: center;
+    height: 42px;
+    cursor: pointer;
+}
 #search{
-    margin-left: -2px;
+    margin-left: 0px;
     height: 42px;
     width: 60px;
     border: 1px solid #303030;
-    background-color: rgb(34, 34, 34);
+    background-color: #222222;
     background-image: url("https://media.discordapp.net/attachments/892937609943322635/1037724361462919211/unknown.png");
     background-position-x:30%;
     background-position-y: center;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
+    cursor: pointer;
 }
 #mic{
-    margin-left: 25px;
-    width: 50px;
-    background-image: url("")
+    border: 10px;
+    border-radius: 50px;
+    background-color: #171717;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1038075457943392336/image.png");
+    background-position-x: center;
+    background-position-y: center;
+    cursor: pointer;
+}
+#mic:hover{
+    background-color: #242424;
+}
+#mic:focus{
+    background-color: #313131;
 }
 #threepoints{
-    width: 100px;
-    background-image: url("")
+    width: 40px;
+    height: 40px;
+    border: 10px;
+    border-radius: 50px;
+    background-color: transparent;
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1038076073000325172/image1.png");
+    background-position-x: center;
+    background-position-y: center;
+    cursor: pointer;
+}
+#threepoints:focus{
+    background-color: #313131;
 }
 #login{
-    width: 100px;
-    background-image: url("")
+    width: 130px;
+    height: 40px;
+    margin-right: 30px;
+    border: 1px solid #303030;
+    border-radius: 35px;
+    background-color: transparent;
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1038078760529973258/image.png");
+    background-position-x: center;
+    background-position-y: center;
+    cursor: pointer;
+}
+#login:hover{
+    background-color: #3ea5ff54;
+}
+#login:focus{
+    background-color: #7bc1ff54;
 }
 #div1{
     display: flex;
+    align-items: center;
 }
 #div2{
     display: flex;
@@ -91,10 +152,136 @@ text::placeholder{
 #div3{
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 #search:hover{
     border-color: rgba(128, 128, 128, 0.63);
 }
 #search:hover{
     border-color: rgba(128, 128, 128, 0.63);
+}
+#MainContent{
+    background-color: #0F0F0F;
+    height: 92.5vh;
+    display: flex;
+}
+.content{
+    width: 68%;
+}
+#video{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 25px;
+    flex-direction: column;
+}
+#title{
+    font-family: sans-serif;
+    color: white;
+    font-size: 2rem;
+    margin-top: 17px;
+    font-size: 18px;
+    font-weight: 500;
+}
+#vizu{
+    font-family: sans-serif;
+    color: white;
+    font-size: 2rem;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight:600;
+}
+#channel{
+    display: flex;
+    margin-top: 14px;
+    margin-left: 25px;
+    gap: 18px;
+}
+#channelText{
+    margin-top: 5px;
+    margin-left: -5px;
+    font-weight:600;
+    color: #aaa;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#channelName{
+    font-family: sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+#numInscritos{
+    margin-top: 5px;
+}
+#channelImg{
+    border-radius: 50px;
+}
+#verificado{
+    width: 18px;
+    height: 18px;
+    margin-top: 6px;
+    margin-left: -15px;
+}
+#bottonsChannel{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+#membro{
+    background-color: #292929;
+    color: #dfdfdf;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 36px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 50px;
+    width: 140px;
+    height: 45px;
+    cursor: pointer;
+}
+#inscrito{
+    background-color: #CC0000;
+    color: #dfdfdf;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 36px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 50px;
+    width: 140px;
+    height: 45px;
+    cursor: pointer;
+}
+#buttonsMain{
+    display: flex;
+    border: red 1px solid;
+    height: 52px;
+    gap: 50px;
+}
+#like{
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1039189233585377331/imagem_2022-11-07_114613259.png");
+    border: 0;
+}
+#deslike{
+    height: 50px;
+    width: 50px;
+}
+#share{
+    height: 50px;
+    width: 50px;
+}
+#more{
+    height: 50px;
+    width: 50px;
+}
+.lateralBar{
+    width: 32%;
+    border: red 1px solid;
 }
