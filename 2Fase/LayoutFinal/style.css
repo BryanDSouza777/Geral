@@ -166,7 +166,8 @@
     display: flex;
 }
 .content{
-    width: 68%;
+    width: 75%;
+    margin-left: 50px;
 }
 #video{
     display: flex;
@@ -257,31 +258,88 @@
 }
 #buttonsMain{
     display: flex;
-    border: red 1px solid;
-    height: 52px;
+    height: 42px;
+    align-items: center;
     gap: 50px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+/* #dis-like{
+    display: flex;
+    align-items: center;
+    background-color: #262626;
+    border-radius: 50px;
+} */
+#likedisc{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    height: 42px;
+    width: 100px;
+    padding-right: 20px;
+    background-color: #262626;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#numlike{
+    color: #dfdfdf;
+    margin-left: -20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 36px;
+    font-weight: bold;
 }
 #like{
     background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
     height: 50px;
-    width: 50px;
+    width: 75px;
     background-color: transparent;
     background-image: url("https://media.discordapp.net/attachments/892937609943322635/1039189233585377331/imagem_2022-11-07_114613259.png");
     border: 0;
+    cursor: pointer;
+}
+#divbar{
+    margin-left: 15px;
+    height: 35px;
+    width: 1px;
+    background-color: #464646;
+    margin-left: -52px;
+}
+#deslike-border{
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    height: 42px;
+    width: 50px;
+    margin-left: -49px;
+    padding-right: 20px;
+    background-color: #262626;
 }
 #deslike{
+    background-repeat: no-repeat;
+    background-position-x: 17px;
+    background-position-y: 10px;
     height: 50px;
     width: 50px;
+    background-color: transparent;
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1039525272250228786/imagem_2022-11-07_114613259.png");
+    border: 0;
+    cursor: pointer;
 }
 #share{
-    height: 50px;
-    width: 50px;
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1039540420360802394/imagem_2022-11-08_110156947.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    height: 42px;
+    width: 150px;
 }
 #more{
-    height: 50px;
+    height: 42px;
     width: 50px;
 }
 .lateralBar{
-    width: 32%;
+    width: 28%;
     border: red 1px solid;
 }
