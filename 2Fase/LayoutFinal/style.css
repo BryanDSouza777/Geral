@@ -3,7 +3,7 @@
     margin: 0;
 }
 .main{
-    height: 98vh;
+    height: 92.5vh;
     width: 100%;
 }
 .header{
@@ -162,7 +162,7 @@
 }
 #MainContent{
     background-color: #0F0F0F;
-    height: 92.5vh;
+    height: 100%;
     display: flex;
 }
 .content{
@@ -261,15 +261,9 @@
     height: 42px;
     align-items: center;
     gap: 50px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 25px;
 }
-/* #dis-like{
-    display: flex;
-    align-items: center;
-    background-color: #262626;
-    border-radius: 50px;
-} */
 #likedisc{
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
@@ -328,18 +322,63 @@
     cursor: pointer;
 }
 #share{
+    display: flex;
+    margin-left: -75px;
+    background-color: #262626;
+    border: 0;
+    border-radius: 50px;
+    align-items: center;
+}
+#share-button{
+    height: 42px;
+    width: 160px;
+    background-color: transparent;
+    border: 0;
     background-image: url("https://media.discordapp.net/attachments/892937609943322635/1039540420360802394/imagem_2022-11-08_110156947.png");
     background-repeat: no-repeat;
-    background-position-x: center;
+    background-position-x: 17px;
     background-position-y: center;
-    height: 42px;
-    width: 150px;
+    cursor: pointer;
+}
+#share-text{
+    color: #dfdfdf;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 36px;
+    font-weight: bold;
+    margin-left: -115px;
+    margin-right: 20px;
+    cursor: pointer;
 }
 #more{
+    border: 0;
+    border-radius: 50px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-color: #262626;
+    transform: rotate(90deg);
+    background-image: url("https://media.discordapp.net/attachments/892937609943322635/1038076073000325172/image1.png");
+    background-position-x: center;
+    background-position-y: center;
+    cursor: pointer;
     height: 42px;
-    width: 50px;
+    width: 42px;
+    margin-left: -27px;
 }
 .lateralBar{
-    width: 28%;
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+    margin-left: -25px;
     border: red 1px solid;
+}
+.rec{
+    height: 18%;
+    width: 100%;
+    margin-top: 20px;
+    border: red 1px solid;
+}
+#thumb1{
+    width: ;
+    background-image: url('https://i.ytimg.com/an_webp/tTVy0lWtxxM/mqdefault_6s.webp?du=3000&sqp=COO8sZsG&rs=AOn4CLDK_bRWuXxg4tttknRrjRj4CWSbOQ');
 }
