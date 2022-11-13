@@ -167,7 +167,7 @@
 }
 .content{
     width: 75%;
-    margin-left: 4px;
+    margin-left: 50px;
 }
 #video{
     display: flex;
@@ -175,10 +175,6 @@
     margin-top: 20px;
     margin-left: 25px;
     flex-direction: column;
-}
-#incvideo{
-    height: 65vh;
-    width: 65vw;
 }
 #title{
     font-family: sans-serif;
@@ -373,82 +369,17 @@
 .lateralBar{
     display: flex;
     flex-direction: column;
-    width: 31%;
-    margin-right: 45px;
+    width: 23%;
+    margin-left: -25px;
+    border: red 1px solid;
 }
 .rec{
-    height: 15%;
+    height: 18%;
     width: 100%;
     margin-top: 20px;
+    border: red 1px solid;
 }
-.thumb{
-    display: flex;
-    width: 12vw;
-    height: 100%;
-    background-repeat: no-repeat;
-}
-.thumb1{
-    background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040631349037514792/download.jpeg');
-}
-.thumb2{
-    background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040630916197912676/image.jpg');
-}
-.thumb3{
-    background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040632434674372718/image3.jpg');
-}
-.thumb4{
-    background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040632434896674867/download.jpeg');
-}
-.thumb5{
-    background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040633376857653319/image5.jpg');
-}
-.thumb6{
-    background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040633377109315634/image4.jpg');
-}
-.rec{
-    display: flex;
-    flex-direction: row;
-    color: white;
-    cursor: pointer;
-}
-.title-rec{
-    color: rgb(243, 243, 243);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    margin-left: 10px;
-    line-height: 20px;
-    font-weight: bold;
-}
-.channel-rec{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: rgb(182, 182, 182);
-    margin-left: 10px;
-    margin-top: 7px;
-}
-.views-rec{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: rgb(182, 182, 182);
-    margin-left: 10px;
-    margin-top: 4px;
-}
-#music-icon{
-    margin-bottom: -3px;
-    margin-left: 2px;
-}
-@media (max-width: 1200px){
-    .lateralBar{
-        display: none;
-    }
-    .content{
-        width: 100%;
-        margin: 0;
-    }
-    #incvideo{
-        width: 100%;
-    }
-    .main{
-        background-color: #0F0F0F;
-    }
+#thumb1{
+    width: ;
+    background-image: url('https://i.ytimg.com/an_webp/tTVy0lWtxxM/mqdefault_6s.webp?du=3000&sqp=COO8sZsG&rs=AOn4CLDK_bRWuXxg4tttknRrjRj4CWSbOQ');
 }

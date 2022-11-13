@@ -3,5 +3,6 @@
         "Exercicios.de.decisão"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "python.pythonPath": "C:\\Users\\bryan.souza1\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"
 }
