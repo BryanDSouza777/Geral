@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    background-color: #0f0f0f
 }
 .main{
     height: 92.5vh;
@@ -9,7 +10,7 @@
 .header{
     background-color: #0f0f0f;
     height: 60px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,9 +48,8 @@
     border: 0;
     color: white;
     height: 40px;
-    width: 435px;
+    width: 40vw;
     font-size: 16px;
-    padding-left: 20px;
     outline: 0;
 }
 .searchBar:focus-within{
@@ -61,6 +61,7 @@
     background-image: url("https://media.discordapp.net/attachments/892937609943322635/1037704247535484998/imagem_2022-11-03_092340889.png")
 }
 .searchBar{
+    padding-left: 20px;
     border: 1px solid #303030;
     border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;
@@ -215,9 +216,11 @@
     color: white;
     text-decoration: none;
     font-size: 18px;
+    white-space: nowrap;
 }
 #numInscritos{
     margin-top: 5px;
+    white-space: nowrap;
 }
 #channelImg{
     border-radius: 50px;
@@ -246,9 +249,11 @@
     width: 140px;
     height: 45px;
     cursor: pointer;
+    white-space: nowrap;
 }
 #inscrito{
     background-color: #CC0000;
+    white-space: nowrap;
     color: #dfdfdf;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -281,12 +286,14 @@
 }
 #numlike{
     color: #dfdfdf;
+    background-color: transparent;
     margin-left: -20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     line-height: 36px;
     font-weight: bold;
     cursor: pointer;
+    white-space: nowrap;
 }
 #like{
     background-repeat: no-repeat;
@@ -347,6 +354,7 @@
 }
 #share-text{
     color: #dfdfdf;
+    background-color: transparent;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     line-height: 36px;
@@ -375,17 +383,23 @@
     flex-direction: column;
     width: 31%;
     margin-right: 45px;
+    height: fit-content;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 .rec{
     height: 15%;
     width: 100%;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .thumb{
     display: flex;
-    width: 12vw;
-    height: 100%;
+    min-width: 178px;
+    min-height: 100px;
     background-repeat: no-repeat;
+    object-fit: cover;
+    border-radius: 10px;
+    background-size: 178px 100px;
 }
 .thumb1{
     background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040631349037514792/download.jpeg');
@@ -405,6 +419,17 @@
 .thumb6{
     background-image: url('https://media.discordapp.net/attachments/831720527948939285/1040633377109315634/image4.jpg');
 }
+.thumb7{
+    background-image: url('https://i.ytimg.com/vi/3M0qJYY_Vu4/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDCs6zrAwLjDaxjGhUWA2UjXsl3ZA');
+}
+.thumb8{
+    background-image: url('https://i.ytimg.com/vi/OX2LuNn9QvU/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCk5YnufKRauENF6kG-02-kBFow1w');
+}
+.thumb-disc{
+    width: 60%;
+    margin-left: 10px;
+    white-space: nowrap;
+}
 .rec{
     display: flex;
     flex-direction: row;
@@ -415,7 +440,6 @@
     color: rgb(243, 243, 243);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    margin-left: 10px;
     line-height: 20px;
     font-weight: bold;
 }
@@ -423,32 +447,93 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: rgb(182, 182, 182);
-    margin-left: 10px;
     margin-top: 7px;
 }
 .views-rec{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: rgb(182, 182, 182);
-    margin-left: 10px;
     margin-top: 4px;
 }
 #music-icon{
     margin-bottom: -3px;
     margin-left: 2px;
 }
-@media (max-width: 1200px){
+@media (max-width: 1260px){
     .lateralBar{
         display: none;
     }
     .content{
         width: 100%;
-        margin: 0;
     }
     #incvideo{
         width: 100%;
     }
+    #video{
+        width: 96%;
+    }
     .main{
         background-color: #0F0F0F;
+    }
+}
+@media (max-width: 515px){
+    #incvideo{
+        width: 427px;
+        height: 240px;
+    }
+}
+@media (max-width: 580px){
+    #bottonsChannel{
+        display: none;
+    }
+}
+@media (max-height: 600px) and (min-width: 515px){
+    #channel{
+        display: none;
+    }
+}
+@media (max-height: 440px) and (max-width: 515px){
+    #channel{
+        display: none;
+    }
+}
+@media (max-height: 750px) and (min-width: 515px){
+    #buttonsMain{
+        display: none;
+    }
+}
+@media (max-height: 520px) and (max-width: 515px){
+    #buttonsMain{
+        display: none;
+    }
+}
+@media (max-width: 480px){
+    #buttonsMain{
+        display: none;
+    }
+}
+@media (max-width: 1000px){
+    #login{
+        display: none;
+    }
+}
+@media (max-width: 720px){
+    #threepoints{
+        display: none;
+    }
+}
+@media (max-width: 640px){
+    #mic{
+        display: none;
+    }
+}
+@media (max-width: 560px){
+    #text{
+        width: 25vw;
+    }
+}
+@media (max-width: 515px) and (max-height: 440px){
+    .main{
+        height: 80vh;
     }
 }
