@@ -1,5 +1,15 @@
 {%extends 'base.html'%}
+{% load static %}
 {%block 'titulo'%}Agenda{%endblock%}
 {%block 'conteudo'%}
+<link rel="stylesheet" href="{% static 'css/stylehome.css'%}">
 <h1>test</h1>
+{% for contato in contatos%}
+    <div class="pessoas">
+        <a href="#">{{contato.nome}}</a>
+        <h3>{{contato.sobrenome}}</h3>
+        <h3>{{contato.email}}</h3>
+        <h3>{{contato.categoria}}</h3>
+    </div>
+{%endfor%}
 {%endblock%}
