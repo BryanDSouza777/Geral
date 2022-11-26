@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0px 40px 0px 40px;
     height: 10vh;
     background-color: rgba(0, 0, 0, 0.85);
 }
@@ -53,11 +54,27 @@
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.2);
     width: 30vw;
-    border: rgba(0, 0, 0, 0.6) solid 3px;
-    margin: 2%
+    margin: 2%;
+    border: 3px solid;
+    border-width: 3px;
+    border-radius: 25px;
 }
+.category-animes{
+    border-color: #2f7fff;
+    box-shadow: 1px 1px 8px #307fff;
+}
+.category-hardware{
+    border-color:#6b2cf5;
+    box-shadow: 1px 1px 8px #e523ff;
+}
+.category-jogos{
+    border-color: #faa13c;
+    box-shadow: 1px 1px 8px #ffa53e;
+}
+
 .title-category{
-    margin-top: 40px;
+    display: flex;
+    align-items: center;
     color: white;
     font-size: 40px;
     font-weight: bold;
@@ -72,29 +89,110 @@
 .animes-background{
     -webkit-text-stroke-color: rgb(0, 65, 187);
     background-image: url('../image/gojo-background.jpg');
-    background-size: 100% 100%;
+    background-size: 100% 101%;
     width: 100%;
     background-repeat: no-repeat;
 }
 .hardwares-background{
     -webkit-text-stroke-color: rgb(136, 0, 199);
     background-image: url('../image/gpu-wallpaper.jpg');
-    background-size: 101% 100%;
+    background-size: 101% 101%;
     width: 100%;
     background-repeat: no-repeat;
 }
 .jogos-background{
     -webkit-text-stroke-color: rgb(255, 166, 0);
     background-image: url('../image/phoenix-wallpaper.png');
-    background-size: 100% 100%;
+    background-size: 100% 101%;
     width: 100%;
     background-repeat: no-repeat;
 }
 .background-category{
     display: flex;
     justify-content: center;
-    border: 3px rgba(0, 0, 0, 0.6) solid;
+    border-bottom: 5px rgba(0, 0, 0, 0.322) solid;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 .category-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 56.5%;
     color: white;
+    margin: 15px 15px 0px 15px;
+    overflow-wrap: break-word;  
+    word-wrap: break-word; 
+    word-break: break-word;
+    line-height: 30px;
+}
+.category-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+.button-redirect{
+    display: flex;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 53%;
+    border-radius: 15px;
+    cursor: pointer;
+    border-top: 0.5px solid rgba(210, 220, 255, 0.418);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.295);
+}
+.button-animes{
+    background-image: linear-gradient(45deg, #2f80ff , #3ccbff);
+    box-shadow: 1px 1px 8px #0053d8;
+}
+.button-hardware{
+    background-image: linear-gradient(45deg, #6b2cf5 , #d450e6);
+    box-shadow: 1px 1px 8px #bc00d4;
+}
+.button-jogos{
+    background-image: linear-gradient(45deg, #b33b0b , #faa13c );
+    box-shadow: 1px 1px 8px #ff8e0c;
+}
+.button-animes:hover{
+    box-shadow: 1px 1px 8px #307fff;
+}
+.button-hardware:hover{
+    box-shadow: 1px 1px 8px #e523ff;
+}
+.button-jogos:hover{
+    box-shadow: 1px 1px 8px #ffa53e;
+}
+#buttons-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 75%;
+    gap: 15px;
+}
+.header-redirect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.5);
+    font-size: 22px;
+    font-weight: bold;
+}
+.header-redirect:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
 }
