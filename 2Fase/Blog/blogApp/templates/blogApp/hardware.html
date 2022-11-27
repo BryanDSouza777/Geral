@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block 'titulo'%}Valhalla Animes{%endblock%}
+{%block 'conteudo'%}
+{% for i in hardware%}
+<div class="nome-modelo">
+    {{i.modelo}}
+</div>
+
+{%endfor%}
+{%endblock%}

@@ -4,14 +4,18 @@
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
+    color: #ffffff;
 }
 #header{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0px 40px 0px 40px;
-    height: 10vh;
-    background-color: rgba(0, 0, 0, 0.85);
+    height: 9vh;
+    background: linear-gradient(45deg, #000000d9, #000000c4);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-bottom: 1px solid rgba(80, 80, 80, 0.18);
 }
 #valhalla-main{
     margin: 0px 0px 0px 40px;
@@ -45,31 +49,34 @@
 }
 #content-home{
     display: flex;
-    height: 90vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    height: 90.9vh;
+    background: rgba(0, 0, 0, 0.5);
     justify-content: space-around;
 }
 .category-home{
     display: flex;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.2);
     width: 30vw;
     margin: 2%;
     border: 3px solid;
     border-width: 3px;
     border-radius: 25px;
+    backdrop-filter: blur(20px);
 }
 .category-animes{
     border-color: #2f7fff;
     box-shadow: 1px 1px 8px #307fff;
+    background: linear-gradient(135deg, #0062ff1c, #0084ff10);
 }
 .category-hardware{
     border-color:#6b2cf5;
     box-shadow: 1px 1px 8px #e523ff;
+    background: linear-gradient(135deg, #e523ff1c, #e523ff10);
 }
 .category-jogos{
     border-color: #faa13c;
     box-shadow: 1px 1px 8px #ffa53e;
+    background: linear-gradient(135deg, #ffa53e1c, #ffb45f10);
 }
 
 .title-category{
@@ -146,8 +153,7 @@
     height: 53%;
     border-radius: 15px;
     cursor: pointer;
-    border-top: 0.5px solid rgba(210, 220, 255, 0.418);
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.295);
+    text-decoration: none;
 }
 .button-animes{
     background-image: linear-gradient(45deg, #2f80ff , #3ccbff);
@@ -158,8 +164,8 @@
     box-shadow: 1px 1px 8px #bc00d4;
 }
 .button-jogos{
-    background-image: linear-gradient(45deg, #b33b0b , #faa13c );
-    box-shadow: 1px 1px 8px #ff8e0c;
+    background-image: linear-gradient(45deg, #ff2525 , #ffe53b );
+    box-shadow: 1px 1px 8px #ff8800;
 }
 .button-animes:hover{
     box-shadow: 1px 1px 8px #307fff;
@@ -168,7 +174,7 @@
     box-shadow: 1px 1px 8px #e523ff;
 }
 .button-jogos:hover{
-    box-shadow: 1px 1px 8px #ffa53e;
+    box-shadow: 1px 1px 8px #ffae00;
 }
 #buttons-header{
     display: flex;
@@ -193,6 +199,28 @@
     font-weight: bold;
 }
 .header-redirect:hover{
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 25px;
+    background-color: #00000073;
+    border-radius: 15px;
+    box-shadow: 1px 4px 25px 0px #000000e7;
+}
+.main-views{
+    display: flex;
+}
+.nome-modelo{
+    font-size: 22px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+}
+.lançamento{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
