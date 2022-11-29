@@ -1,15 +1,18 @@
 {%extends 'base.html'%}
 {% load static %}
 {%block 'titulo'%}Valhalla Animes{%endblock%}
+{%block 'classWallpaper'%}bgGojo{%endblock%}
 {%block 'conteudo'%}
-{% for i in animes%}
-<div class="main-views">
-    <div class="nome-modelo">
-        <a href="{%url 'animeDetail' i.nome%}">{{i.nome}}</a>
+<div>
+    {% for i in animes%}
+    <div class="main-views">
+        <div class="nome-modelo">
+            <a href="{%url 'animeDetail' i.nome%}">{{i.nome}}</a>
+        </div>
+        <div class="lançamento">
+            {{i.lançamento}}
+        </div>
     </div>
-    <div class="lançamento">
-        {{i.lançamento}}
-    </div>
+    {%endfor%}
 </div>
-{%endfor%}
 {%endblock%}

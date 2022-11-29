@@ -44,8 +44,21 @@
 }
 #main{
     height: 100vh;
+}
+.bgRed{
     background-image: url('../image/wallpaper-red.png');
+    width: 100%;
     background-size: cover;
+}
+.bgGojo{
+    background-image: url('../image/gojo-background.jpg');
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.wallpaper-main{
+    width: 100%;
+    height: 100%;
 }
 #content-home{
     display: flex;

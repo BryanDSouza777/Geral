@@ -11,23 +11,26 @@
 </head>
 <body>
     <div id="main">
-        <div id="header">
-            <a href="{%url 'home'%}" id="valhalla-main">
-                <div class="valhalla-text">
-                    <p class="valhalla-text">Valhalla</p>
+        <div class="{%block 'classWallpaper'%}{%endblock%}">
+            <div id="header">
+                <a href="{%url 'home'%}" id="valhalla-main">
+                    <div class="valhalla-text">
+                        <p class="valhalla-text">Valhalla</p>
+                    </div>
+                    <div id="valhalla-icon"></div>
+                    <div class="valhalla-text">
+                        <p class="valhalla-text">NerdGeek</p>
+                    </div>
+                </a>
+                <div id="buttons-header">
+                    <a class="header-redirect header-animes" href="{%url 'animes'%}">Animes</a>
+                    <a class="header-redirect header-hardware" href="{%url 'hardware'%}">Hardware</a>
+                    <a class="header-redirect header-jogos" href="{%url 'jogos'%}">Jogos</a>
                 </div>
-                <div id="valhalla-icon"></div>
-                <div class="valhalla-text">
-                    <p class="valhalla-text">NerdGeek</p>
-                </div>
-            </a>
-            <div id="buttons-header">
-                <a class="header-redirect header-animes" href="{%url 'animes'%}">Animes</a>
-                <a class="header-redirect header-hardware" href="{%url 'hardware'%}">Hardware</a>
-                <a class="header-redirect header-jogos" href="{%url 'jogos'%}">Jogos</a>
-            </div>
-        </div>  
-    {% block 'conteudo'%}
-    {%endblock%}
+            </div> 
+            {% block 'conteudo'%}
+            {%endblock%}
+        </div>
+    </div>
 </body>
 </html>
