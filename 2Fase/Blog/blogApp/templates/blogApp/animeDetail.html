@@ -1,9 +1,23 @@
 {%extends 'base.html'%}
 {% load static %}
 {%block 'titulo'%}Valhalla Animes{%endblock%}
+{%block 'classWallpaper'%}bgGojo{%endblock%}
+{% block 'valhalla-text'%}Animes{%endblock%}
 {%block 'conteudo'%}
-<h1>ola</h1>
-{% for i in animes%}
-{{i.nome}}
-{%endfor%}
+<div class="urlInfo">
+    <img src="{{animeUrl.foto.url}}" style="overflow:auto; height: 100px; border-radius: 25px;">
+    <h1>{{animeUrl.nome}}</h1>
+</div>
+<div class="urlMain">
+    <div class="urlContent urlMainConfig">
+        {{animeUrl.sinopse}}
+    </div>
+    <div class="urlSideInfo urlMainConfig">
+        <img src="{{animeUrl.foto.url}}" style="overflow: auto; height: 100px"><br>
+        {{animeUrl.temporadas}} Temporadas<br>
+        {{animeUrl.episodios}} Episódios<br>
+        {{animeUrl.lançamento}}<br>
+        
+    </div>
+</div>
 {%endblock%}

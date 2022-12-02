@@ -1,11 +1,46 @@
 {%extends 'base.html'%}
 {% load static %}
 {%block 'titulo'%}Valhalla Hardware{%endblock%}
+{%block 'classWallpaper'%}bgHardware{%endblock%}
+{% block 'valhalla-text'%}Hardware{%endblock%}
 {%block 'conteudo'%}
-{% for i in hardware%}
-<div class="nome-modelo">
-    {{i.modelo}}
+<div class="titles-content-main">
+    <div class="foto titles-content"><h4 class="titles-content-text">FOTO</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">NOME</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">TEMPORADAS</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">EPISODIOS</h4></div>
+    <div class="lançamento titles-content"><h4 class="titles-content-text">LANÇAMENTO</h4></div>  
 </div>
-
+{% for i in hardware%}
+{% if i.mostrar%}
+<div class="main-views">
+    <div class="foto div-info">
+        {%if i.foto%}
+        <img src="{{i.foto.url}}"  style="overflow:auto; height: 100%; border-radius: 25px;">
+        {%endif%}
+    </div> 
+    <div class="nome-modelo div-info">
+        <a href="{%url 'hardwareDetail' i.nome%}">{{i.nome}}</a>
+    </div>  
+    <div class="peça div-info">
+        {{i.peça}}
+    </div>
+    <div class="marca div-info">
+        {{i.marca}}
+    </div>
+    <div class="lançamento div-info">
+        {{i.lançamento}}
+    </div>
+</div>
+{%endif%}
 {%endfor%}
+<div class="paginator">
+    {% for pagina in hardware.paginator.page_range %}
+    {% if hardware.number == pagina %}
+        <a style="background-color: #00000080; " href="?page={{pagina}}">{{pagina}}</a>
+    {% else %}
+        <a href="?page={{ pagina }}">{{pagina}}</a>
+    {%endif%}
+    {%endfor%}
+</div>
 {%endblock%}

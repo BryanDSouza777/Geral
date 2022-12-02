@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 class Animes(models.Model):
     nome = models.CharField(max_length=255)
-    episodios = models.CharField(max_length=255, blank=True)
-    temporadas = models.CharField(max_length=255, blank=True)
+    episodios = models.IntegerField(blank=True)
+    temporadas = models.IntegerField(blank=True)
     lançamento = models.DateField()
     sinopse = models.TextField(blank=True)
     mostrar = models.BooleanField(default=True)
-    foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%d')
+    foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%D')
 
     def __str__(self):
         return self.nome
@@ -23,12 +23,13 @@ class Hardware(models.Model):
     nome = models.CharField(max_length=255)
     marca = models.CharField(max_length=255)
     peça = models.ForeignKey(TipoHardware,on_delete=models.CASCADE)
+    lançamento = models.DateField()
     especificações = models.TextField(blank=True)
     mostrar = models.BooleanField(default=True)
-    foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%d')
+    foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%D')
 
     def __str__(self):
-        return self.modelo
+        return self.nome
 
 class Jogos(models.Model):
     nome = models.CharField(max_length=255)
@@ -36,7 +37,7 @@ class Jogos(models.Model):
     desenvolvedora = models.CharField(max_length=255)
     descrição = models.TextField(blank=True)
     mostrar = models.BooleanField(default=True)
-    foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%d')
+    foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%D')
 
     def __str__(self):
         return self.nome

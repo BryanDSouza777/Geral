@@ -2,17 +2,45 @@
 {% load static %}
 {%block 'titulo'%}Valhalla Animes{%endblock%}
 {%block 'classWallpaper'%}bgGojo{%endblock%}
+{% block 'valhalla-text'%}Animes{%endblock%}
 {%block 'conteudo'%}
-<div>
-    {% for i in animes%}
-    <div class="main-views">
-        <div class="nome-modelo">
-            <a href="{%url 'animeDetail' i.nome%}">{{i.nome}}</a>
-        </div>
-        <div class="lançamento">
-            {{i.lançamento}}
-        </div>
+<div class="titles-content-main">
+    <div class="foto titles-content"><h4 class="titles-content-text">FOTO</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">NOME</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">TEMPORADAS</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">EPISODIOS</h4></div>
+    <div class="lançamento titles-content"><h4 class="titles-content-text">LANÇAMENTO</h4></div>  
+</div>
+{% for i in animes%}
+{% if i.mostrar%}
+<div class="main-views">
+    <div class="foto div-info">
+        {%if i.foto%}
+        <img src="{{i.foto.url}}"  style="overflow:auto; height: 100%; border-radius: 25px;">
+        {%endif%}
+    </div> 
+    <div class="nome-modelo div-info">
+        <a href="{%url 'animeDetail' i.nome%}">{{i.nome}}</a>
+    </div>  
+    <div class="temporadas div-info">
+        {{i.temporadas}}
     </div>
+    <div class="episodios div-info">
+        {{i.episodios}}
+    </div>
+    <div class="lançamento div-info">
+        {{i.lançamento}}
+    </div>
+</div>
+{%endif%}
+{%endfor%}
+<div class="paginator">
+    {% for pagina in animes.paginator.page_range %}
+    {% if animes.number == pagina %}
+        <a style="background-color: #00000080; " href="?page={{ pagina }}">{{pagina}}</a>
+    {% else %}
+        <a href="?page={{ pagina }}">{{pagina}}</a>
+    {%endif%}
     {%endfor%}
 </div>
 {%endblock%}

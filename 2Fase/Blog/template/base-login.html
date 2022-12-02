@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block 'titulo'%}{%endblock%}</title>
+    <link rel="icon" href="{% static 'image/Valhalla-icon.png'%}" />
+    <link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+</head>
+<body>
+    <div id="main">
+        <div class="{%block 'classWallpaper'%}{%endblock%}">
+            <div id="header">
+                <a href="{%url 'home'%}" id="valhalla-main">
+                    <div class="valhalla-text">
+                        <p class="valhalla-text">Valhalla</p>
+                    </div>
+                    <div id="valhalla-icon"></div>
+                    <div class="valhalla-text">
+                        <p class="valhalla-text">NerdGeek</p>
+                    </div>
+                </a>
+                <div id="buttons-header">
+                    <a class="header-redirect header-animes" href="{%url 'animes'%}">Animes</a>
+                    <a class="header-redirect header-hardware" href="{%url 'hardware'%}">Hardware</a>
+                    <a class="header-redirect header-jogos" href="{%url 'jogos'%}">Jogos</a>
+                </div>
+            </div> 
+            {% block 'conteudo'%}
+            {%endblock%}
+        </div>
+    </div>
+</body>
+</html>
