@@ -7,6 +7,8 @@ class Animes(models.Model):
     temporadas = models.IntegerField(blank=True)
     lançamento = models.DateField()
     sinopse = models.TextField(blank=True)
+    sinopse2 = models.TextField(blank=True)
+    sinopse3 = models.TextField(blank=True)
     mostrar = models.BooleanField(default=True)
     foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%D')
 
@@ -25,6 +27,8 @@ class Hardware(models.Model):
     peça = models.ForeignKey(TipoHardware,on_delete=models.CASCADE)
     lançamento = models.DateField()
     especificações = models.TextField(blank=True)
+    especificações2 = models.TextField(blank=True)
+    especificações3 = models.TextField(blank=True)
     mostrar = models.BooleanField(default=True)
     foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%D')
 
@@ -36,6 +40,8 @@ class Jogos(models.Model):
     lançamento = models.DateField()
     desenvolvedora = models.CharField(max_length=255)
     descrição = models.TextField(blank=True)
+    descrição2 = models.TextField(blank=True)
+    descrição3 = models.TextField(blank=True)
     mostrar = models.BooleanField(default=True)
     foto = models.ImageField(blank = True, upload_to='fotos/%Y/%m/%D')
 

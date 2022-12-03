@@ -3,6 +3,43 @@
 {%block 'titulo'%}Valhalla Jogos{%endblock%}
 {% block 'valhalla-text'%}Jogos{%endblock%}
 {%block 'conteudo'%}
-<h1>ola</h1>
-{{i.nome}}
+<style>
+    body{
+        background-color: rgb(223, 155, 138);
+        background-repeat: repeat;
+    }
+</style>
+<div class="urlInfo">
+    <h1>{{jogoUrl.nome}}</h1>
+</div>
+<div class="urlMain">
+    <div class="urlContent infoSettings">
+        {%if jogoUrl.descrição%}
+        <div class="textUrl1 textUrl">
+            <p>{{jogoUrl.descrição}}</p>
+        </div>
+        {%endif%}
+        {%if jogoUrl.descrição2%}
+        <div class="textUrl2 textUrl">
+            <br><br>
+            <p>{{jogoUrl.descrição2}}</p>
+        </div>
+        {%endif%}
+        {%if jogoUrl.descrição3%}
+        <div class="textUrl3 textUrl">
+            <br><br>
+            <p>{{jogoUrl.descrição3}}</p>
+        </div>
+        {%endif%}
+    </div>
+    <div class="urlSideInfo infoSettings">
+        {%if jogoUrl.foto%}
+        <div class="image-sideinfo"><img src="{{jogoUrl.foto.url}}" style="height: 100px"><br></div>
+        {%endif%}
+        <div class="text-sideinfo">
+            <div class="text-sideinfo">{{jogoUrl.desenvolvedora}}<br></div>
+            <div class="text-sideinfo">{{jogoUrl.lançamento}}</div>
+        </div>
+    </div>
+</div>
 {%endblock%}

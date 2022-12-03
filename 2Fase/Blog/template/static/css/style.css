@@ -220,6 +220,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
     width: 50%;
     height: 100%;
     text-decoration: none;
@@ -292,6 +293,20 @@ a{
 .paginator a:focus{
     background-color: #0000009f;
 }
+.search{
+    color: white;
+    background-color: #00000054;
+    border: #ffffff10 2px solid;
+    outline: none;
+    border-radius: 18px;
+    font-size: 18px;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+}
+.search::-webkit-search-cancel-button{
+    display: none;
+}
 .titles-content-main{
     padding-top: 15px;
     display: flex;
@@ -327,37 +342,70 @@ a{
 }
 .urlInfo{
     display: flex;
-    flex-direction: row;
+    height: 10%;
+    justify-content: center;
     font-size: 30px;
     font-weight: bold;
     cursor: default;
-    padding: 10px 0 15px 0;
     border-bottom: #0000003a 1px solid;
+    -webkit-text-stroke: 2px #00000063;
 }
 .urlMain{
     display: flex;
     flex-direction: row;
 }
-.urlMainConfig{
+.infoSettings{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 24px;
+    background-color: #0000003a;
+    border-radius: 25px;
+    font-size: 22px;
     font-weight: bold;
-    height: 100%;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 .urlContent{
+    justify-content: center;
     width: 70%;
-    padding: 40px 15px 20px 90px;
+    margin: 30px 30px 30px 30px;
+    padding: 20px 20px 20px 20px;
 }
 .urlSideInfo{
     width: 30%;
-    height: 75%;
-    padding: 30px 10px 30px 10px;
-    margin: 20px 15px 0 0;
-    border-radius: 25px;
-    background-color: #0000003a;
+    margin: 30px 30px 30px 30px;
+    padding: 20px 0  20px 0;
+    justify-content: space-between;
+}
+.image-sideinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 40%;
+    width: 100%;
+}
+.text-sideinfo{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: start;
+    align-items: center;
+}
+.textUrl{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    word-wrap: break-word; 
+    word-break: break-word;
+}
+.textUrl2{
+    margin-top: 20px;
+    justify-content: start;
+}
+.textUrl3{
+    margin-top: 20px;
 }

@@ -3,8 +3,43 @@
 {%block 'titulo'%}Valhalla Hardware{%endblock%}
 {% block 'valhalla-text'%}Hardware{%endblock%}
 {%block 'conteudo'%}
-<h1>ola</h1>
-{% for i in animes%}
-{{i.nome}}
-{%endfor%}
+<style>
+    body{
+        background-color: rgb(196, 138, 223);
+    }
+</style>
+<div class="urlInfo">
+    <h1>{{hardwareUrl.nome}}</h1>
+</div>
+<div class="urlMain">
+    <div class="urlContent infoSettings">
+        {%if hardwareUrl.especificações%}
+        <div class="textUrl1 textUrl">
+            <p>{{hardwareUrl.especificações}}</p>
+        </div>
+        {%endif%}
+        {%if hardwareUrl.especificações2%}
+        <div class="textUrl2 textUrl">
+            <br><br>
+            <p>{{hardwareUrl.especificações2}}</p>
+        </div>
+        {%endif%}
+        {%if hardwareUrl.especificações3%}
+        <div class="textUrl3 textUrl">
+            <br><br>
+            <p>{{hardwareUrl.especificações3}}</p>
+        </div>
+        {%endif%}
+    </div>
+    <div class="urlSideInfo infoSettings">
+        {%if hardwareUrl.foto%}
+        <div class="image-sideinfo"><img src="{{hardwareUrl.foto.url}}" style="overflow: auto; height: 100px"><br></div>
+        {%endif%}
+        <div class="text-sideinfo">
+            <div class="text-sideinfo">{{hardwareUrl.marca}}<br></div>
+            <div class="text-sideinfo">{{hardwareUrl.peça}}<br></div>
+            <div class="text-sideinfo">{{hardwareUrl.lançamento}}</div>
+        </div>
+    </div>
+</div>
 {%endblock%}

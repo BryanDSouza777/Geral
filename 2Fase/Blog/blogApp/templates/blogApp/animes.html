@@ -2,6 +2,11 @@
 {% load static %}
 {%block 'titulo'%}Valhalla Animes{%endblock%}
 {%block 'classWallpaper'%}bgGojo{%endblock%}
+{%block 'search-bar'%}
+<form action="{% url 'searchAnimes'%}" method="get" style="height: 70%; width: 25%; display: flex; align-items: center; ">
+    <input type="search" name="searchAnimes" autofocus="on" autocomplete="off" class="search" id="searchAnime" placeholder="Pesquisar">
+</form>
+{%endblock%}
 {% block 'valhalla-text'%}Animes{%endblock%}
 {%block 'conteudo'%}
 <div class="titles-content-main">
@@ -12,7 +17,6 @@
     <div class="lançamento titles-content"><h4 class="titles-content-text">LANÇAMENTO</h4></div>  
 </div>
 {% for i in animes%}
-{% if i.mostrar%}
 <div class="main-views">
     <div class="foto div-info">
         {%if i.foto%}
@@ -32,7 +36,6 @@
         {{i.lançamento}}
     </div>
 </div>
-{%endif%}
 {%endfor%}
 <div class="paginator">
     {% for pagina in animes.paginator.page_range %}

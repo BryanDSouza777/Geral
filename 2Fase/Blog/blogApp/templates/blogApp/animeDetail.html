@@ -1,23 +1,46 @@
 {%extends 'base.html'%}
 {% load static %}
 {%block 'titulo'%}Valhalla Animes{%endblock%}
-{%block 'classWallpaper'%}bgGojo{%endblock%}
 {% block 'valhalla-text'%}Animes{%endblock%}
 {%block 'conteudo'%}
+<style>
+    body{
+        background-color: rgb(138, 138, 223);
+        background-repeat: repeat;
+    }
+</style>
 <div class="urlInfo">
-    <img src="{{animeUrl.foto.url}}" style="overflow:auto; height: 100px; border-radius: 25px;">
     <h1>{{animeUrl.nome}}</h1>
 </div>
 <div class="urlMain">
-    <div class="urlContent urlMainConfig">
-        {{animeUrl.sinopse}}
+    <div class="urlContent infoSettings">
+        {%if animeUrl.sinopse%}
+        <div class="textUrl1 textUrl">
+            <p>{{animeUrl.sinopse}}</p>
+        </div>
+        {%endif%}
+        {%if animeUrl.sinopse2%}
+        <div class="textUrl2 textUrl">
+            <br><br>
+            <p>{{animeUrl.sinopse2}}</p>
+        </div>
+        {%endif%}
+        {%if animeUrl.sinopse3%}
+        <div class="textUrl3 textUrl">
+            <br><br>
+            <p>{{animeUrl.sinopse3}}</p>
+        </div>
+        {%endif%}
     </div>
-    <div class="urlSideInfo urlMainConfig">
-        <img src="{{animeUrl.foto.url}}" style="overflow: auto; height: 100px"><br>
-        {{animeUrl.temporadas}} Temporadas<br>
-        {{animeUrl.episodios}} Episódios<br>
-        {{animeUrl.lançamento}}<br>
-        
+    <div class="urlSideInfo infoSettings">
+        {%if animeUrl.foto%}
+        <div class="image-sideinfo"><img src="{{animeUrl.foto.url}}" style="overflow: auto; height: 100px"><br></div>
+        {%endif%}
+        <div class="text-sideinfo">
+            <div>{{animeUrl.temporadas}} Temporadas<br></div>
+            <div>{{animeUrl.episodios}} Episódios<br></div>
+            <div>{{animeUrl.lançamento}}<br></div>
+        </div>
     </div>
 </div>
 {%endblock%}

@@ -2,17 +2,21 @@
 {% load static %}
 {%block 'titulo'%}Valhalla Hardware{%endblock%}
 {%block 'classWallpaper'%}bgHardware{%endblock%}
+{%block 'search-bar'%}
+<form action="{% url 'searchHardware'%}" method="get" style="height: 70%; width: 25%; display: flex; align-items: center; ">
+    <input type="search" name="searchHardware" autofocus="on" autocomplete="off" class="search" id="searchHardware" placeholder="Pesquisar">
+</form>
+{%endblock%}
 {% block 'valhalla-text'%}Hardware{%endblock%}
 {%block 'conteudo'%}
 <div class="titles-content-main">
     <div class="foto titles-content"><h4 class="titles-content-text">FOTO</h4></div>
     <div class="titles-content"><h4 class="titles-content-text">NOME</h4></div>
-    <div class="titles-content"><h4 class="titles-content-text">TEMPORADAS</h4></div>
-    <div class="titles-content"><h4 class="titles-content-text">EPISODIOS</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">PEÇA</h4></div>
+    <div class="titles-content"><h4 class="titles-content-text">MARCA</h4></div>
     <div class="lançamento titles-content"><h4 class="titles-content-text">LANÇAMENTO</h4></div>  
 </div>
 {% for i in hardware%}
-{% if i.mostrar%}
 <div class="main-views">
     <div class="foto div-info">
         {%if i.foto%}
@@ -32,7 +36,6 @@
         {{i.lançamento}}
     </div>
 </div>
-{%endif%}
 {%endfor%}
 <div class="paginator">
     {% for pagina in hardware.paginator.page_range %}
