@@ -40,9 +40,9 @@
 <div class="paginator">
     {% for pagina in hardware.paginator.page_range %}
     {% if hardware.number == pagina %}
-        <a style="background-color: #00000080; " href="?page={{pagina}}">{{pagina}}</a>
+        <a style="background-color: #00000080; " href="?page={{pagina}}&searchAnimes={{request.Get.searchHardware}}">{{pagina}}</a>
     {% else %}
-        <a href="?page={{ pagina }}">{{pagina}}</a>
+        <a href="?page={{ pagina }}&searchAnimes={{request.Get.searchHardware}}">{{pagina}}</a>
     {%endif%}
     {%endfor%}
 </div>

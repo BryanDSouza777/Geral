@@ -40,9 +40,9 @@
 <div class="paginator">
     {% for pagina in animes.paginator.page_range %}
     {% if animes.number == pagina %}
-        <a style="background-color: #00000080; " href="?page={{ pagina }}">{{pagina}}</a>
+        <a style="background-color: #00000080; " href="?page={{ pagina }}&searchAnimes={{request.Get.searchAnimes}}">{{pagina}}</a>
     {% else %}
-        <a href="?page={{ pagina }}">{{pagina}}</a>
+        <a href="?page={{ pagina }}&searchAnimes={{request.Get.searchAnimes}}">{{pagina}}</a>
     {%endif%}
     {%endfor%}
 </div>
