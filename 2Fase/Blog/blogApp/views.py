@@ -95,3 +95,6 @@ def searchJogos(request):
     return render(request, 'blogApp/searchJogos.html',{
         'jogos': jogos
     })
+
+def publi(request):
+    return render(request, 'blogApp/publi.html')

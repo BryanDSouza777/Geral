@@ -9,6 +9,25 @@
 a{
     text-decoration: none;
 }
+::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 25px;
+}
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.596)
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.753);
+}
 #header{
     display: flex;
     align-items: center;
@@ -330,6 +349,21 @@ a{
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgb(0, 0, 0);
 }
+.publi{
+    display: flex;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.644);
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    height: 60px;
+    width: 150px;
+    justify-content: center;
+    align-items:center;
+    border: black 1px solid;
+    border-radius: 25px;
+    margin: 0 50px 0 0;
+}
 @media (max-width: 1120px){
     .lançamento{
         display: none;
@@ -367,14 +401,16 @@ a{
 }
 .urlContent{
     justify-content: center;
-    width: 70%;
+    width: 62%;
     margin: 30px 30px 30px 30px;
-    padding: 20px 20px 20px 20px;
+    padding: 50px 20px 50px 20px;
 }
 .urlSideInfo{
+    position:fixed;
+    right: 0px;
     width: 30%;
     margin: 30px 30px 30px 30px;
-    padding: 20px 0  20px 0;
+    padding: 50px 0 50px 0;
     justify-content: space-between;
 }
 .image-sideinfo{
@@ -408,4 +444,64 @@ a{
 }
 .textUrl3{
     margin-top: 20px;
+}
+.content-radio{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+.optionPubliCategory{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 150px 0 0 0;
+}
+.bar{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 75px;
+    border: 3px solid #0000008f;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.radio-button{
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.bar:hover{
+    transition: .6s;
+    background: #fff
+}
+.radio-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-radio{
+    font-size: 30px;
+    margin-bottom: 10%;
+    cursor: default;
+    font-weight: bold;
+}
+.radio-submit{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 12%;
+    position: absolute;
+    bottom: 35%;
+}
+.radio-submit-button{
+    display: flex;
+    background: linear-gradient(45deg, #5a0000, #b10000);
+    font-size: 35px;
+    font-weight: bold;
+    justify-content: center;
+    cursor: pointer;
+    width: 20%;
+    height: 100%;
+    border: 3px #0000009f solid;
+    border-radius: 15px;
 }
