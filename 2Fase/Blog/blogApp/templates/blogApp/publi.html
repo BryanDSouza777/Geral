@@ -16,28 +16,29 @@
         <div class="radio-content">
             <h3 class="title-radio">Animes</h3>
             <div class="radio radio-animes">
-                <input name="radio" type="radio" class="radio-button" id="radio1" value="{{request.POST.categoria}}"></input>
+                <input name="radio" type="radio" class="radio-button" id="radio1" value="animes{{request.GET.categoria}}"></input>
                 <label class="bar" for="radio1"></label>
             </div>
         </div>
         <div class="radio-content">
             <h3 class="title-radio">Hardware</h3>
             <div class="radio radio-hardware">
-                <input name="radio" type="radio" class="radio-button" id="radio2" value="{{request.POST.categoria}}"></input>
+                <input name="radio" type="radio" class="radio-button" id="radio2" value="hardware{{request.GET.categoria}}"></input>
                 <label class="bar" for="radio2"></label>
             </div>
         </div>
         <div class="radio-content">
             <h3 class="title-radio">Jogos</h3>
             <div class="radio radio-jogos">
-                <input name="radio" type="radio" class="radio-button" id="radio3" value="{{request.POST.categoria}}"></input>
+                <input name="radio" type="radio" class="radio-button" id="radio3" value="jogos{{request.GET.categoria}}"></input>
                 <label class="bar" for="radio3"></label>
             </div>
         </div>
     </div>
-    <div class="radio-submit">
-        <input name="submit" type="submit" class="radio-submit-button"></input>
-    </div>
+{% if radioValue == animes %}
+<form action="">
+    <input type="text">
+    <input type="text">
 </form>
-{% if radioValue == %}
+{% endif %}
 {%endblock%}

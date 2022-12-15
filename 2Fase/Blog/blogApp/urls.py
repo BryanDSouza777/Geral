@@ -17,4 +17,5 @@ urlpatterns = [
     path('animes/<str:nomeAnime>',views.animeDetail, name = 'animeDetail'),
 
     path('publi/',views.publi, name='publi')
+    #path('publi/<str:>')
 ]
