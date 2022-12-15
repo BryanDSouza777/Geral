@@ -97,7 +97,7 @@ def searchJogos(request):
     })
 
 def publi(request):
-    radioValue = request.GET.get('categoria')
+    radioValue = request.GET.get('radio')
     return render(request, 'blogApp/publi.html',{
         'radioValue': radioValue
     })

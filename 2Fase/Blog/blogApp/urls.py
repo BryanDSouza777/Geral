@@ -16,6 +16,6 @@ urlpatterns = [
     path('hardware/<str:nomeHardware>',views.hardwareDetail, name = 'hardwareDetail'),
     path('animes/<str:nomeAnime>',views.animeDetail, name = 'animeDetail'),
 
-    path('publi/',views.publi, name='publi')
-    #path('publi/<str:>')
+    path('publi/',views.publi, name='publi'),
+    # path('publi/<str:categoria>',views.publi, name='publi')
 ]
